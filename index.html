@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lambeth Air Dashboard | Urban Insight</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/addons/p5.sound.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main style="position: fixed; mix-blend-mode: overlay;"></main>
+    <div id="window-loader">
+        <div class="shutter left"><div class="handle"></div></div>
+        <div class="shutter right"><div class="handle"></div></div>
+    </div>
+
+    <header>
+        <div class="hero-text">
+            <span class="location-tag">Public Health Information Service</span>
+            
+            <div class="hero-title-wrapper">
+                <img src="title.png" alt="Breathe Lambeth" class="hero-title-image">
+            </div>
+
+            <p>Making air quality visible, making care accessible. </p>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="dashboard">
+            <div class="data-grid">
+                <div class="data-card">
+                    <div class="data-label">Air Quality Index (EAQI)</div>
+                    <div class="data-val" id="aqi-val">--</div>
+                    <div id="aqi-status" class="status-badge">Loading...</div>
+                </div>
+                <div class="data-card">
+                    <div class="data-label">Current Local Weather</div>
+                    <div class="data-val" id="temp-val">--</div>
+                    <div id="weather-group">
+                        <span id="weather-emoji">⏳</span>
+                        <span id="weather-desc">Syncing...</span>
+                    </div>
+                </div>
+                <div class="data-card">
+                    <div class="data-label">Fine Particles (PM 2.5)</div>
+                    <div class="data-val" id="pm25-val">--</div>
+                    <small>Concentration: µg/m³</small>
+                </div>
+                <div class="data-card">
+                    <div class="data-label">Nitrogen Dioxide (NO₂)</div>
+                    <div class="data-val" id="no2-val">--</div>
+                    <small>Concentration: µg/m³</small>
+                </div>
+            </div>
+            
+            <div class="advice-box" id="advice-container">
+                <div class="advice-header">
+                    <span class="pulse-icon"></span>
+                    <strong>Health & Ventilation Guidance:</strong>
+                </div>
+                <p id="advice-text">Synchronizing with local Lambeth sensors...</p>
+            </div>
+        </section>
+
+        <section class="knowledge-section">
+            <div class="knowledge-row top-row">
+                <div class="info-card">
+                    <h3>NO₂ </h3>
+                    <p>NO₂ mainly comes from traffic and gas boilers. Levels are higher near busy roads. Breathing high NO₂ for long periods can irritate the lungs and worsen asthma.</p>
+                </div>
+                <div class="info-card">
+                    <h3>PM 2.5</h3>
+                    <p>PM2.5 is very tiny dust in the air. It comes from vehicle exhaust, construction, and burning fuels. These particles can enter the lungs and harm heart and lung health.</p>
+                </div>
+            </div>
+            <div class="knowledge-row">
+                <div class="info-card wide">
+                    <h3>The Indoor Air Quality Risk</h3>
+                    <p>ndoor air is not always cleaner than outdoor air. Cooking, gas stoves, and poor ventilation can cause pollution to build up indoors. Opening windows can help, but not when outdoor pollution is high. Choosing the right time to ventilate is important.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="pet-introduction-section">
+            <div class="pet-intro-card">
+                <div class="pet-intro-text">
+                    <span class="pixel-tag"> * Care Lambeth - Window Air Guide</span>
+                    <h2>Your Desk Pet: A Cloud Companian</h2>
+                    <p>
+                        This is <strong>Cloudy</strong>, a desktop companion pet designed specifically for Lambeth community users. It provides <strong>non-intrusive</strong> notifications on your desktop, allowing you to quickly determine whether it's appropriate to open a window for ventilation.
+                    </p>
+                    
+                    <div class="pet-mood-guide">
+                        <strong>Mood Guide:</strong>
+                        <ul>
+                            <li><span class="status-dot excellent"></span> Nice: Happy & Clean</li>
+                            <li><span class="status-dot good"></span> Good: Pouting & Blue</li>
+                            <li><span class="status-dot moderate"></span> Moderate: Misty & Sad</li>
+                            <li><span class="status-dot poor"></span> Poor: Grey & Masked</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="pet-intro-visual">
+                    <div class="visual-container">
+                        <img src="pet.gif" alt="Pixel Art Cloud Desk Pet Animation" class="pixel-pet-image">
+                        <div class="action-buttons horizontal">
+                            <a href="https://www.capcut.cn/view/7617196252328935961?t=1&id=7617321888037536281&channel=1" class="btn-sec">Demo Video</a>
+                            <a href="#" class="btn-sec">Download</a>
+                        </div>
+                    </div>
+                    <div class="pixel-frame-deco"></div> 
+                </div>
+            </div>
+        </section>
+
+        <section class="window-intro-section">
+    <div class="window-intro-card video-layout">
+        <div class="window-header-area">
+            <span class="glass-tag">Direct Environmental Feedback</span>
+            <h2>Interactive Visual Window</h2>
+        </div>
+
+        <div class="window-visual">
+            <div class="video-frame-wrapper">
+                <video class="window-video-asset" controls autoplay muted loop playsinline>
+                    <source src="window-demo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <div class="window-footer-area">
+            <p>
+                Low-intrusive smart Windows only appear when needed and disappear quickly. As air quality changes, smart Windows display different effects through intuitive visual prompts and natural signals, helping us better control our living environment.
+            </p>
+            <div class="action-buttons horizontal">
+                <a href="#" class="btn-sec">Download</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <section class="outdoor-cta">
+            <div class="cta-glass-card">
+                <h2>Ready for a Fresh Breath?</h2>
+                <p>Explore the parks in the Lambeth district and enjoy the clean air!</p>
+                <div class="cta-action">
+                    <a href="https://www.lambeth.gov.uk/parks" target="_blank" class="btn-primary">
+                        <span>Explore Lambeth Green Spaces</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => document.body.classList.add('window-open'), 500);
+        });
+
+        function getWeatherEmoji(code) {
+            if (code === 0) return { emoji: "☀️", desc: "Clear Sky" };
+            if (code >= 1 && code <= 3) return { emoji: "⛅", desc: "Partly Cloudy" };
+            if (code >= 45 && code <= 48) return { emoji: "🌫️", desc: "Foggy" };
+            if (code >= 51 && code <= 67) return { emoji: "🌧️", desc: "Raining" };
+            return { emoji: "☁️", desc: "Cloudy" };
+        }
+
+        async function fetchLambethData() {
+            const lat = 51.46, lon = -0.11;
+            try {
+                const [aqRes, weatherRes] = await Promise.all([
+                    fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=pm2_5,nitrogen_dioxide,european_aqi`),
+                    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code`)
+                ]);
+                const aq = await aqRes.json();
+                const weather = await weatherRes.json();
+                updateUI(aq.current, weather.current);
+            } catch (e) {
+                document.getElementById('advice-text').innerText = "Data synchronization error.";
+            }
+        }
+
+        function updateUI(air, weather) {
+            document.getElementById('no2-val').innerText = air.nitrogen_dioxide.toFixed(1);
+            document.getElementById('pm25-val').innerText = air.pm2_5.toFixed(1);
+            document.getElementById('temp-val').innerText = weather.temperature_2m.toFixed(1) + "°C";
+            document.getElementById('aqi-val').innerText = air.european_aqi;
+
+            const weatherInfo = getWeatherEmoji(weather.weather_code);
+            document.getElementById('weather-emoji').innerText = weatherInfo.emoji;
+            document.getElementById('weather-desc').innerText = weatherInfo.desc;
+
+            const aqi = air.european_aqi;
+            const aqiStatus = document.getElementById('aqi-status');
+            
+            if(aqi <= 20) { 
+                aqiStatus.innerText = "Excellent"; 
+                aqiStatus.style.background = "#FFFFFF"; 
+                aqiStatus.style.color = "#1565C0"; 
+            } else if(aqi <= 40) { 
+                aqiStatus.innerText = "Good"; 
+                aqiStatus.style.background = "#BBDEFB"; 
+                aqiStatus.style.color = "#0D47A1"; 
+            } else { 
+                aqiStatus.innerText = "Moderate"; 
+                aqiStatus.style.background = "#FFE082"; 
+                aqiStatus.style.color = "#5D4037"; 
+            }
+
+            document.getElementById('advice-text').innerText = aqi < 30 ? 
+                "Outdoor air is fresh. Optimal time to ventilate your home and Pet's space." : 
+                "Pollution levels are elevated. Keep windows closed to maintain clean indoor air.";
+        }
+        fetchLambethData();
+        setInterval(fetchLambethData, 900000);
+    </script>
+    <script src="sketch.js"></script>
+</body>
+</html>
